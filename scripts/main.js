@@ -7,32 +7,25 @@ const alignLeftMarkup = document.getElementById('justifyLeft');
 const alignRightMarkup = document.getElementById('justifyRight');
 const alignJustifyMarkup = document.getElementById('justifyFull');
 const alignCenterMarkup = document.getElementById('justifyCenter');
-
-//arrays
+//array
 const alignTypesExecCommand = ['justifyLeft', 'justifyRight', 'justifyFull', 'justifyCenter'];
-const alignTypesCssFomated = ['start', 'right', 'justify', 'center'];
-const styleTypes = ['bold', 'italic', 'underline']
+
 let focus = 0
+let lastElementFocus = ''
 container.focus()
 
 function format(command, value) {
     document.execCommand(command, false, value);
-    if(alignTypesExecCommand.indexOf(command) >= 0){
-        setTextAlign(alignTypesCssFomated[alignTypesExecCommand.indexOf(command)])
+
+    if(document.getElementById(command).classList.contains('selected') == true){
+        document.getElementById(command).classList.remove('selected')
+    }else{
+        document.getElementById(command).classList.add('selected')
     }
-    if(styleTypes.indexOf(command) >= 0){
-        setTextStyle(command)
-    }
+    container.focus()
 }
 
 function setFocus(x){
-    if(x == 0){
-        if(container.lastChild == null){
-            container.focus();
-        }else{
-            container.focus();
-        }
-    }
     return focus = x;
 }
 
@@ -43,8 +36,9 @@ const intevalVerify = setInterval(() => {
         if(window.getSelection().focusNode.textContent.length == 0){
             return;
         }
+        
         const selectedElement = window.getSelection().focusNode.parentNode;
-        const getStyles = window.getComputedStyle(selectedElement);
+        const getStyles = window.getComputedStyle(selectedElement);        
 
         const classfier = new Classfier(getStyles);
         const configuration = classfier.getConfiguration;
@@ -57,15 +51,9 @@ const intevalVerify = setInterval(() => {
 
 
 function setTextStyle(data){
-    if(data.length == 0){
-        italicMarkup.classList.remove('selected');
-        underlineMarkup.classList.remove('selected');
-        boldMarkup.classList.remove('selected');
-    }else{
-        data.indexOf('bold') >= 0 ? boldMarkup.classList.add('selected') : boldMarkup.classList.remove('selected')
-        data.indexOf('underline') >= 0 ? underlineMarkup.classList.add('selected') : underlineMarkup.classList.remove('selected')
-        data.indexOf('italic') >= 0 ? italicMarkup.classList.add('selected') : italicMarkup.classList.remove('selected')
-    }
+    data.indexOf('bold') >= 0 ? boldMarkup.classList.add('selected') : boldMarkup.classList.remove('selected')
+    data.indexOf('underline') >= 0 ? underlineMarkup.classList.add('selected') : underlineMarkup.classList.remove('selected')
+    data.indexOf('italic') >= 0 ? italicMarkup.classList.add('selected') : italicMarkup.classList.remove('selected')
 }
 
 function setTextAlign(data){

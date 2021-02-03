@@ -14,7 +14,7 @@ class Classfier{
     identifyStyle(style){
         const styles = []
 
-        if(style.textDecoration.split(' ')[0] == 'underline'){
+        if(style.textDecorationLine == 'underline'){
             styles.push('underline')
         }
         if(style.fontWeight == '700'){
