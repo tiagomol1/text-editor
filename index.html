@@ -12,16 +12,16 @@
 <body>
     <h1>Text Editor</h1>
     <span>
-        <img src="assets/bold.svg" onClick="format('bold')" width="20px">
-        <img src="assets/italic.svg" onClick="format('italic')" width="20px">
-        <img src="assets/underline.svg" onClick="format('underline')" width="20px">
-        <img src="assets/align-left.svg" onClick="format('justifyLeft')" width="20px">
-        <img src="assets/align-justify.svg" onClick="format('justifyFull')" width="20px">
-        <img src="assets/align-center.svg" onClick="format('justifyCenter')" width="20px">
-        <img src="assets/align-right.svg" onClick="format('justifyRight')" width="20px">
-        <img src="assets/list.svg" onClick="format('insertunorderedlist')" width="20px">
+        <img src="assets/bold.svg" id="bold" onClick="format('bold')" width="20px">
+        <img src="assets/italic.svg" id="italic" onClick="format('italic')" width="20px">
+        <img src="assets/underline.svg" id="underline" onClick="format('underline')" width="20px">
+        <img src="assets/align-left.svg" id="justifyLeft" onClick="format('justifyLeft')" width="20px">
+        <img src="assets/align-justify.svg" id="justifyFull" onClick="format('justifyFull')" width="20px">
+        <img src="assets/align-center.svg" id="justifyCenter" onClick="format('justifyCenter')" width="20px">
+        <img src="assets/align-right.svg" id="justifyRight" onClick="format('justifyRight')" width="20px">
     </span>
-    <div class="paper" contenteditable="true"></div>
-    <script src="script.js"></script>
+    <div class="paper" contenteditable="true" onfocus="setFocus(1)" onblur="setFocus(0)"></div>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/classifier.js"></script>
 </body>
 </html>

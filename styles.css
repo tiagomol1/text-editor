@@ -33,12 +33,15 @@ img:hover{
     background-color: #FFF;
 }
 
+img.selected{
+    background-color: #55555598;
+}
+
 .paper{
     box-shadow: 0px 0px 15px 5px #55555598;
     border-radius: 3px;
     background-color: #fff;
     width: 44rem;
-    height: 50rem;
     padding: 4rem;
     padding-left: 5rem;
     padding-right: 5rem;
